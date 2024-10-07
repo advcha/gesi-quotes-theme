@@ -230,9 +230,16 @@
   {% for group in grouped_line_items %}
     {% set group_total = [] %}
     {% set dummy_total = 0 %}
+    {% set group_no = loop.index %}
+    {% if group.grouper == 'null' or group.grouper == '' %}
+      {% set group_no = '' %}
+      {% set group_name = '' %}
+    {% else %}
+      {% set group_name = group.grouper %}
+    {% endif %}  
     <tr class="line-items__group-row group-row-header">
-      <td class="item-number"><span class="item-name">{{ loop.index }}</span></td>
-      <td colspan="7"><span class="group-name">{{ group.grouper }}</span></td>
+      <td class="item-number"><span class="item-name">{{ group_no }}</span></td>
+      <td colspan="7"><span class="group-name">{{ group_name }}</span></td>
     </tr>
     {% for line_item in group.list %}
       <tr class="line-items__item-row">
