@@ -198,10 +198,30 @@ html {
 }
 
 /* CUSTOM GESI QUOTE THEME */
-.hs-quotes--flow .container--content{
+.hs-quotes--flow.gesi-quotes .banner__title h1,
+.hs-quotes--flow.gesi-quotes .banner__content, 
+.hs-quotes--flow.gesi-quotes .banner__content p,
+.hs-quotes--flow.gesi-quotes .banner__sender > div:after, 
+.hs-quotes--flow.gesi-quotes .banner__recipient:after, 
+.hs-quotes--flow.gesi-quotes .banner__sender:after,
+.hs-quotes--flow.gesi-quotes .banner__content .reference-number p{
+  color: #000000;
+}
+.hs-quotes--flow.gesi-quotes .banner__sender > div:after, 
+.hs-quotes--flow.gesi-quotes .banner__recipient:after, 
+.hs-quotes--flow.gesi-quotes .banner__sender:after{
+  background-color: #000000;
+}
+.hs-quotes--flow.gesi-quotes .banner{
+  background-color: transparent;
+}
+.hs-quotes--flow.gesi-quotes .banner__title h1{
+  font-size: 45px;
+}
+.hs-quotes--flow.gesi-quotes .container--content{
   max-width: 80%;
 }
-.hs-quotes--flow .line-items__table.gesi-quotes-table{
+.hs-quotes--flow.gesi-quotes .line-items__table.gesi-quotes-table{
   table-layout: fixed;
 }
 .gesi-quotes-table tbody,
