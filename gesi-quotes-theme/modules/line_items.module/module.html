@@ -239,7 +239,7 @@
     {% endif %}  
     <tr class="line-items__group-row group-row-header">
       <td class="item-number"><span class="item-name">{{ group_no }}</span></td>
-      <td colspan="7"><span class="group-name">{{ group_name }}</span></td>
+      <td colspan="5"><span class="group-name">{{ group_name }}</span></td>
     </tr>
     {% for line_item in group.list %}
       <tr class="line-items__item-row">
@@ -298,14 +298,6 @@
           {% elif property_name == 'item_unit_unit' %}
             <td class="span-col item-unit">
               <span class="item-name">{{ line_item.item_unit_unit|sanitize_html }}</span>
-            </td>
-          {% elif property_name == 'volume' %}
-            <td class="span-col">
-              <span class="item-name">{{ line_item.volume|sanitize_html }}</span>
-            </td>
-          {% elif property_name == 'item_volume_unit' %}
-            <td class="span-col item-unit">
-              <span class="item-name">{{ line_item.item_volume_unit|sanitize_html }}</span>
             </td>
           {% elif property_name == "amount" %}
             {% do product_amount.append(line_item.amount|int) %}
@@ -419,7 +411,7 @@
       </tr>
     {% endfor %}
     <tr class="line-items__group-row group-row-total">
-      <td colspan="7"><span class="group-total">Total {{ loop.index }}</span></td>
+      <td colspan="5"><span class="group-total">Total {{ loop.index }}</span></td>
       <td><span class="item-total">{{ group_total|last|format_currency_value(locale=LOCALE, currency=CURRENCY, maxDecimalDigits=6)|sanitize_html }}</span></td>
     </tr>
   {% endfor %}
@@ -431,35 +423,20 @@
     <table aria-label="{{ module.default_text.line_items|escape_attr }}" class="line-items__table gesi-quotes-table">
       <thead class="line-items__table-header">
         <tr>
-        {% for column in module.line_item_columns %}
-          {% if column.additional_product_property == "quantity" %}
-            <th colspan="2" scope="col" class="span-header">Unit</th>
-          {% else %}
-            {% if column.additional_product_property == "volume" %}
-              <th colspan="2" scope="col" class="span-header">Volume</th>
-            {% else %}  
-              {% if column.additional_product_property != "item_unit_unit" and column.additional_product_property != "item_volume_unit" %}
-                {% if column.additional_product_property == "item_number" %}
-                  <th rowspan="2" scope="col" class="item-number">{{ column.title|sanitize_html }}</th>
-                {% else %}
-                  <th rowspan="2" scope="col">{{ column.title|sanitize_html }}</th>
-                {% endif %}
-              {% endif %}
-            {% endif %}
-          {% endif %}
-        {% endfor %}
-        </tr>
-        <tr>
           {% for column in module.line_item_columns %}
-            {% if column.additional_product_property == "quantity" or column.additional_product_property == "volume" %}
-              <th scope="col" class="span-col">{{ column.title|sanitize_html }}</th>
+            {% if column.additional_product_property == "item_number" %}
+              <th scope="col" class="item-number">{{ column.title|sanitize_html }}</th>
+            {% elif column.additional_product_property == "quantity" %}
+              <th scope="col" class="item-quantity">{{ column.title|sanitize_html }}</th>
+            {% elif column.additional_product_property == "item_unit_unit" %}
+              <th scope="col" class="item-unit-unit">{{ column.title|sanitize_html }}</th>
+            {% elif column.additional_product_property == "price" or column.additional_product_property == "amount" %}
+              <th scope="col" class="item-price">{{ column.title|sanitize_html }}</th>
             {% else %}
-              {% if column.additional_product_property == "item_unit_unit" or column.additional_product_property == "item_volume_unit" %}
-              <th scope="col" class="span-col">{{ column.title|sanitize_html }}</th>
-              {% endif %}
+              <th scope="col">{{ column.title|sanitize_html }}</th>
             {% endif %}
           {% endfor %}
-          </tr>
+        </tr>
       </thead>
       <tbody class="line-items__table-body">
         {% set has_present_line_items = line_items|length > 0 %}

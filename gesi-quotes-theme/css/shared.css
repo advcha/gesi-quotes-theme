@@ -221,9 +221,9 @@ html {
 .hs-quotes--flow.gesi-quotes .container--content{
   max-width: 80%;
 }
-.hs-quotes--flow.gesi-quotes .line-items__table.gesi-quotes-table{
+/*.hs-quotes--flow.gesi-quotes .line-items__table.gesi-quotes-table{
   table-layout: fixed;
-}
+}*/
 .gesi-quotes-table tbody,
 .gesi-quotes-table tr{
   border: 1px solid rgba(66, 91, 118, 1.0) !important;
@@ -253,9 +253,18 @@ html {
   width: 180px;
 }
 .hs-quotes--flow .gesi-quotes-table thead tr th.item-number,
-.hs-quotes--flow .gesi-quotes-table tbody tr td.item-number{
+.hs-quotes--flow .gesi-quotes-table tbody tr td.item-number,
+.hs-quotes--flow .gesi-quotes-table thead tr th.item-quantity{
+  width: 5%;
   min-width: 50px;
-  width: 50px;
+}
+.hs-quotes--flow .gesi-quotes-table thead tr th.item-unit-unit{
+  width: 8%;
+  min-width: 60px;
+}
+.hs-quotes--flow .gesi-quotes-table thead tr th.item-price{
+  width: 20%;
+  min-width: 120px;
 }
 .hs-quotes--flow .gesi-quotes-table thead tr th.span-col,
 .hs-quotes--flow .gesi-quotes-table tbody tr td.span-col{
