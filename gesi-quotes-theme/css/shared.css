@@ -2,11 +2,27 @@ html {
   overflow-x: hidden;
   width: 100%;
 }
-
+body.gesi-quotes,
+body.gesi-quotes h2,
+body.gesi-quotes .h2,
+body.gesi-quotes h3,
+body.gesi-quotes .h3 {
+  color: #000000;
+}
+body.gesi-quotes button, 
+body.gesi-quotes .button, 
+body.gesi-quotes button.hs-download__button, 
+body.gesi-quotes button.payment__button--checkout, 
+body.gesi-quotes .esignature__verify-button-container .esignature__verify-button {
+  border: 1px solid #000000;
+  background-color: #000000;
+}
 .hs-quotes.hs-quotes--flow {
   width: 100%;
 }
-
+body.gesi-quotes #hs_cos_wrapper_logo img{
+  height: 45px !important;
+}
 .hs-quotes--flow .sender-company {
   display: flex;
   justify-content: space-around;
